@@ -16,12 +16,16 @@ help() {
 
     usage:
 
+        store [file]
+
         store ls
         store cp [dest]
         store mv [dest]
         
         store find
         store empty
+
+        store help
 
 _EOF
 }
@@ -43,7 +47,7 @@ case "$1" in
         DEST="${2:-.}"
         SRC="$(store.bash find)"
         if [[ "$SRC" != "NOT FOUND" ]]; then
-             cp $SRC $DEST
+             rsync $SRC $DEST
         fi
         ;;
     mv)
@@ -69,6 +73,12 @@ case "$1" in
         fi
         ;;
     *)
-        help
+        if [[ -z "$1" ]]; then
+            store.bash help
+        elif [[ ! -f "$1" ]]; then
+            echo "FILE '$1' NOT FOUND"
+        else
+            rsync $1 "$STORE/"
+        fi
         ;;
 esac

@@ -15,7 +15,7 @@ help() {
     Downloads directory files utility script.
 
     usage:
-
+        
         downloads ls
         downloads cp [dest]
         downloads mv [dest]
@@ -24,6 +24,8 @@ help() {
         
         downloads find
         downloads empty
+
+        downloads help
 
 _EOF
 }
