@@ -50,7 +50,7 @@ case "$1" in
         mv "$(downloads.bash find)" $DEST
         ;;
     clean)
-        echo -n "This will remove all files in the download directory. Are you sure? [y/n]: "
+        echo -n "This will remove all files in the download ($DOWNLOADS) directory. Are you sure? [y/n]: "
         read ANSWER
         if [[ "$ANSWER" == "y" ]]; then
             rm -rf $DOWNLOADS/*
