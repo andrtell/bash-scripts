@@ -43,11 +43,17 @@ case "$1" in
         ;;
     cp)
         DEST="${2:-.}"
-        cp "$(downloads.bash find)" $DEST
+        SRC="$(downloads.bash find)"
+        if [[ "$SRC" != "NOT FOUND" ]]; then
+             cp $SRC $DEST
+        fi
         ;;
     mv)
         DEST="${2:-.}"
-        mv "$(downloads.bash find)" $DEST
+        SRC="$(downloads.bash find)"
+        if [[ "$SRC" != "NOT FOUND" ]]; then
+            mv $SRC $DEST
+        fi
         ;;
     clean)
         echo -n "This will remove all files in the download ($DOWNLOADS) directory. Are you sure? [y/n]: "
@@ -57,7 +63,12 @@ case "$1" in
         fi
         ;;
     find)
-        echo $DOWNLOADS/$(ls -1 $DOWNLOADS | fzf)
+        FILE="$DOWNLOADS/$(ls -1 $DOWNLOADS | fzf)"
+        if [[ -f "$FILE" ]]; then
+            echo "$FILE"
+        else
+            echo "NOT FOUND"
+        fi
         ;;
     empty)
         if [[ -z "$(ls -A $DOWNLOADS)" ]]; then
