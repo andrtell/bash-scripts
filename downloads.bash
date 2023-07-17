@@ -11,14 +11,20 @@ deps "fzf"
 
 help() {
     cat <<_EOF
+
+    Downloads directory files utility script.
+
     usage:
 
         downloads ls
         downloads cp [dest]
         downloads mv [dest]
+
+        downloads clean
         
         downloads find
-        downloads 
+        downloads empty
+
 _EOF
 }
 
@@ -42,6 +48,13 @@ case "$1" in
     mv)
         DEST="${2:-.}"
         mv "$(downloads.bash find)" $DEST
+        ;;
+    clean)
+        echo -n "This will remove all files in the download directory. Are you sure? [y/n]: "
+        read ANSWER
+        if [[ "$ANSWER" == "y" ]]; then
+            rm -rf $DOWNLOADS/*
+        fi
         ;;
     find)
         echo $DOWNLOADS/$(ls -1 $DOWNLOADS | fzf)
