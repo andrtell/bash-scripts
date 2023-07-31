@@ -1,3 +1,8 @@
 alias dl='downloads.bash'
 alias pack='pack.bash'
+alias power='power.bash'
+alias shine='shine.bash'
 alias store='store.bash'
+alias volume='volume.bash'
+alias wifi='wifi.bash'
+alias zap='zap.bash'
