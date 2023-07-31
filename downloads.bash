@@ -16,16 +16,16 @@ help() {
 
     usage:
         
-        downloads ls
-        downloads cp [dest]
-        downloads mv [dest]
+        dl ls
+        dl cp [dest]
+        dl mv [dest]
 
-        downloads clean
+        dl clean
         
-        downloads find
-        downloads empty
+        dl find
+        dl empty
 
-        downloads help
+        dl help
 
 _EOF
 }
