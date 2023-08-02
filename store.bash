@@ -11,22 +11,24 @@ deps "fzf"
 
 help() {
     cat <<_EOF
+Stores directory files utility script.
 
-    Stores directory files utility script.
+usage:
+    
+    store <command>
 
-    usage:
+commands:
 
-        store [file]
+    store [file]        Move file to the store.
 
-        store ls
-        store cp [dest]
-        store mv [dest]
-        
-        store find
-        store empty
+    store ls            List files in store.
+    store cp [dest]     Copy file FROM store to [dest].
+    store mv [dest]     Move file FROM store to [dest].
 
-        store help
+    store find          Find file in store. 
+    store empty         Is store empty?
 
+    store help          Print help.
 _EOF
 }
 
@@ -47,7 +49,7 @@ case "$1" in
         DEST="${2:-.}"
         SRC="$(store.bash find)"
         if [[ "$SRC" != "NOT FOUND" ]]; then
-             rsync $SRC $DEST
+            rsync $SRC $DEST
         fi
         ;;
     mv)

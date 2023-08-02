@@ -1,11 +1,11 @@
 #!/bin/env bash
 
 deps() {
-  if ! type -p $1 &> /dev/null 
-  then
-      echo "'$1' must be installed to run this script."
-      exit 126
-  fi
+    if ! type -p $1 &> /dev/null 
+    then
+        echo "'$1' must be installed to run this script."
+        exit 126
+    fi
 }
 
 deps "awk"
@@ -14,27 +14,26 @@ deps "iwctl"
 deps "rfkill"
 
 help() {
-  cat <<_EOF
+    cat <<_EOF
+Manage the WIFI.
 
-    Manage the WIFI.
+usage: 
 
-    usage: 
-      
-      wifi <command> [<arg> ...]
+    wifi <command> [<arg> ...]
 
-    commands:
+commands:
 
-      connect <ssid>    connect to a wifi
-      disconnect        disconnect from wifi
-      show              show wifi status
+    connect <ssid>    Connect to a WIFI network.
+    disconnect        Disconnect from the WIFI network.
 
-      block             block wifi
-      unblock           unblock wifi
+    status            Show WIFI status.
 
-      config            list config files
+    block             Block WIFI.
+    unblock           Unblock WIFI.
 
-      help              print help
+    config            List WIFI config files.
 
+    help              Print help.
 _EOF
 }
 
@@ -49,7 +48,7 @@ NETWORK_DEVICE=${NETWORK_DEVICE:-"wlp0s20f3"}
 case "$1" in
     connect)
         (( $# < 2 )) && {
-            echo "must supply a wifi <ssid>"
+            echo "A WIFI <ssid> is required."
             exit 126
         }
         shift;

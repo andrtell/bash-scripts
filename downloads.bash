@@ -11,22 +11,25 @@ deps "fzf"
 
 help() {
     cat <<_EOF
-
-    Downloads directory files utility script.
+    Manage downloaded files.
 
     usage:
-        
-        dl ls
-        dl cp [dest]
-        dl mv [dest]
 
-        dl clean
-        
-        dl find
-        dl empty
+        dl <command>
 
-        dl help
+    commands:
 
+        dl ls           List files in the download directory.
+
+        dl cp [dest]    Copy file FROM the download directory to [dest].
+        dl mv [dest]    Move file FROM the download directory to [dest].
+
+        dl clean        Remove all files from the download directory.
+
+        dl find         Find file in the download directory.
+        dl empty        Is the download directory empty?
+
+        dl help         Print help.
 _EOF
 }
 
@@ -47,7 +50,7 @@ case "$1" in
         DEST="${2:-.}"
         SRC="$(downloads.bash find)"
         if [[ "$SRC" != "NOT FOUND" ]]; then
-             cp $SRC $DEST
+            cp $SRC $DEST
         fi
         ;;
     mv)

@@ -1,33 +1,32 @@
 #!/bin/env bash
 
 deps() {
-  if ! type -p $1 &> /dev/null 
-  then
-      echo "'$1' must be installed to run this script."
-      exit 126
-  fi
+    if ! type -p $1 &> /dev/null 
+    then
+        echo "'$1' must be installed to run this script."
+        exit 126
+    fi
 }
 
 deps "pamixer"
 
 help() {
-  cat <<_EOF
+    cat <<_EOF
+Adjust the volume.
 
-    Set and get the volume.
+usage: 
 
-    usage: 
-      
-      volume <command> [<arg> ...]
+    volume <command> [<arg> ...]
 
-    commands:
+commands:
 
-      set   <volume>  set the sound volume (0-100)
-      get             get the sound volume
-      mute            mute
-      unmute          unmute
+    set   <volume>  Set the sound volume (0-100).
+    get             Get the sound volume.
 
-      help          print help
+    mute            Mute sound.
+    unmute          Unmute sound.
 
+    help            Print help.
 _EOF
 }
 
@@ -37,22 +36,22 @@ _EOF
 }
 
 case "$1" in
-      set)
+    set)
         pamixer --set-volume $2
         ;;
-      get)
+    get)
         echo "$(pamixer --get-volume)%"
         ;;
-      mute)
+    mute)
         pamixer -m
         ;;
-      unmute)
+    unmute)
         pamixer -u
         ;;
-      help)
+    help)
         help
         ;;
-      *)
+    *)
         help
         exit 126
         ;;

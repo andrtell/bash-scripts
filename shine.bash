@@ -1,31 +1,31 @@
 #!/bin/env bash
 
 deps() {
-  if ! type -p $1 &> /dev/null 
-  then
-      echo "'$1' must be installed to run this script."
-      exit 126
-  fi
+    if ! type -p $1 &> /dev/null 
+    then
+        echo "'$1' must be installed to run this script."
+        exit 126
+    fi
 }
 
 deps "brightnessctl"
 deps "bc"
 
 help() {
-  cat <<_EOF
+    cat <<_EOF
 
-    Set and get screen brightness.
+    Adjust the screen brightness.
 
     usage: 
-      
-      shine <command> [<arg> ...]
+
+    shine <command> [<arg> ...]
 
     brightness:
 
-      set   <brightness>    set the brightness (0-100)
-      get                   get the brightness
+    set   <brightness>    set the brightness (0-100)
+    get                   get the brightness
 
-      help                  print help
+    help                  print help
 
 _EOF
 }
@@ -36,16 +36,16 @@ _EOF
 }
 
 case "$1" in
-      set)
+    set)
         sudo brightnessctl -q s "$2%"
         ;;
-      get)
-	echo "scale=1; ($(brightnessctl g) / $(brightnessctl m)) * 100" | bc
+    get)
+        echo "scale=1; ($(brightnessctl g) / $(brightnessctl m)) * 100" | bc
         ;;
-      help)
+    help)
         help
         ;;
-      *)
+    *)
         help
         exit 126
         ;;

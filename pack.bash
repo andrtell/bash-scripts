@@ -2,12 +2,12 @@
 
 # Original source: https://github.com/lukrop/xbps-pkg/blob/master/pkg
 
-deps() {
-  if ! type -p $1 &> /dev/null 
-  then
-      echo "'$1' must be installed to run this script."
-      exit 126
-  fi
+deps() { 
+    if ! type -p $1 &> /dev/null 
+    then
+        echo "'$1' must be installed to run this script."
+        exit 126
+    fi
 }
 
 deps "xbps-alternatives"
@@ -21,43 +21,44 @@ deps "xbps-rindex"
 
 help() {
     cat <<_EOF
-    Wrapper around the void linux 'xbps' suit of commands.
+Wrapper around the Void-linux 'xbps' suit of commands.
 
-    usage:
+usage:
 
-      pack <command> [<arg> ...]
+    pack <command> [<arg> ...]
 
-    commands:
+commands:
 
-      add      <package>              add package
-      remove   <package>              remove package
-      upgrade  <package>              upgrade package
-      upgrade                         upgrade ALL packages
-      files    <package>              list files in a package
-      info     <package>              show package info
-      
-      deps     <package>              list package dependencies
-      revdeps  <package>              list packages which depends on package
-      
-      hold     <package>              hold package
-      unhold   <package>              unhold package
-      
-      search   <package>              search for package
-      which    <file>                 show package with file
-      
-      installed                       list installed packages
-      orphans                         list orphaned packages
-      
-      clean                           remove obsolete packages from cache
-    
-      db            [<arg> ...]       run xbps-pkgdb
-      alternatives  [<arg> ...]       run xbps-alternatives
-      query         [<arg> ...]       run xbps-query
-      reconfigure   [<arg> ...]       run xbps-reconfigure
-      rindex        [<arg> ...]       run xbps-rindex
-      
-      help                            print help
+    add      <package>              Add package.
+    remove   <package>              Remove package.
+    upgrade  <package>              Upgrade package.
 
+    upgrade                         Upgrade ALL packages.
+
+    files    <package>              List files in a package.
+    info     <package>              Show package info.
+
+    deps     <package>              List package dependencies.
+    revdeps  <package>              List packages which depends on package.
+
+    hold     <package>              Hold package.
+    unhold   <package>              Unhold package.
+
+    search   <package>              Search for package.
+    which    <file>                 Show package with file.
+
+    installed                       List installed packages.
+    orphans                         List orphaned packages.
+
+    clean                           Remove obsolete packages from cache.
+
+    db            [<arg> ...]       Wraps 'xbps-pkgdb'.
+    alternatives  [<arg> ...]       Wraps 'xbps-alternatives'.
+    query         [<arg> ...]       Wraps 'xbps-query'.
+    reconfigure   [<arg> ...]       Wraps 'xbps-reconfigure'.
+    rindex        [<arg> ...]       Wraps 'xbps-rindex'.
+
+    help                            Print help.
 _EOF
 }
 
@@ -135,4 +136,3 @@ case "$1" in
         exit 126
         ;;
 esac
-

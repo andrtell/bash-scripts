@@ -2,19 +2,17 @@
 
 help() {
     cat <<_EOF
+Show battery capacity
 
-    Show battery capacity
+usage:
 
-    usage:
+    power <command> 
 
-      power <command> 
+commands:
 
-    commands:
+    show    Show the battery capacity (default).
 
-      show    show battery capacity (default command)
-
-      help    print help
-
+    help    Print help.
 _EOF
 }
 
@@ -25,8 +23,6 @@ case "$1" in
     *)
         CAPACITY="$(cat /sys/class/power_supply/BAT0/capacity)%"
         LEVEL="$(cat /sys/class/power_supply/BAT0/capacity_level)"
-	echo "$CAPACITY ($LEVEL)"
+        echo "$CAPACITY ($LEVEL)"
         ;;
 esac
-
-

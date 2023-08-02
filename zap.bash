@@ -2,11 +2,11 @@
 
 help() {
     cat <<_EOF
-    moves file to the $HOME/files/zap directory
+Move file to the $HOME/files/zap directory.
 
-    usage:
+usage:
 
-      zap <file>
+  zap <file>
 _EOF
 }
 
