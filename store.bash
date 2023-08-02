@@ -19,16 +19,16 @@ usage:
 
 commands:
 
-    store [file]        Move file to the store.
+    [file]        Move file to the store.
 
-    store ls            List files in store.
-    store cp [dest]     Copy file FROM store to [dest].
-    store mv [dest]     Move file FROM store to [dest].
+    ls            List files in store.
+    cp [dest]     Copy file FROM store to [dest].
+    mv [dest]     Move file FROM store to [dest].
 
-    store find          Find file in store. 
-    store empty         Is store empty?
+    find          Find file in store.
+    empty         Is store empty?
 
-    store help          Print help.
+    help          Print help.
 _EOF
 }
 
