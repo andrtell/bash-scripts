@@ -36,7 +36,7 @@ case "$1" in
         ;;
     start)
         volume.bash set 25
-        swaymsg exec "mpv --shuffle --no-video $MUSIC_DIR"
+        swaymsg exec "mpv --shuffle $MUSIC_DIR"
         ;;
     stop)
         kill -9 $(pgrep mpv)
