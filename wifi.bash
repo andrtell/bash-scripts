@@ -37,8 +37,8 @@ commands:
 _EOF
 }
 
-NETWORK_DEVICE="$(ip -o -4 route show to default | awk '{print $5}')"
-NETWORK_DEVICE=${NETWORK_DEVICE:-"wlp0s20f3"}
+# NETWORK_DEVICE=${NETWORK_DEVICE:-"wlp0s20f3"}
+NETWORK_DEVICE=${NETWORK_DEVICE:-"wlan0"}
 
 (( $# < 1 )) && {
     help
@@ -57,7 +57,7 @@ case "$1" in
     disconnect)
         iwctl station $NETWORK_DEVICE disconnect
         ;;
-    show)
+    status)
         iwctl station $NETWORK_DEVICE show
         ;;
     scan)

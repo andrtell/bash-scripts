@@ -50,14 +50,14 @@ case "$1" in
         DEST="${2:-.}"
         SRC="$(downloads.bash find)"
         if [[ "$SRC" != "NOT FOUND" ]]; then
-            cp $SRC $DEST
+            cp "$SRC" "$DEST"
         fi
         ;;
     mv)
         DEST="${2:-.}"
         SRC="$(downloads.bash find)"
         if [[ "$SRC" != "NOT FOUND" ]]; then
-            mv $SRC $DEST
+            mv "$SRC" "$DEST"
         fi
         ;;
     clean)

@@ -22,11 +22,11 @@ usage:
 
 commands:
 
-    start     Play all files in: $MUSIC_DIR
+    play   Play all files in: $MUSIC_DIR
 
-    stop      Stop music.
+    stop   Stop music.
 
-    help      Print help.
+    help   Print help.
 _EOF
 }
 
@@ -34,9 +34,8 @@ case "$1" in
     help)
         help
         ;;
-    start)
-        volume.bash set 25
-        swaymsg exec "mpv --shuffle $MUSIC_DIR"
+    play)
+        swaymsg exec "mpv --volume=50 --playlist=$MUSIC_DIR/playlist.txt"
         ;;
     stop)
         kill -9 $(pgrep mpv)
